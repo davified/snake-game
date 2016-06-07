@@ -1,5 +1,6 @@
 var PIXEL_SIZE = 10
 var BOARD_SIZE = 50
+length = 5
 
 function SnakePiece($container, tail) {
   this.x = 0
@@ -36,7 +37,6 @@ SnakePiece.prototype = {
       var x = this.x + this.vx
       var y = this.y + this.vy
 
-
       if (x < 0) x = 0
       if (y < 0) y = 0
       if (x >= BOARD_SIZE) x = BOARD_SIZE - 1
@@ -60,14 +60,51 @@ function getRandomInt(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function generateFood(foodX, foodY) {
-  foodX = getRandomInt(0, 49)
-  foodX = getRandomInt(0, 49)
+var Food = function($container) {
+  this.x = getRandomInt(0, 49)
+  this.y = getRandomInt(0, 49)
 
-  move(foodX, foodY)
+  this.$food = $("<div class = 'snake'></div>")
+  this.$food.appendTo($container)
+
+  this.renderFood = function() {
+    this.$food.css({
+      left: this.x * PIXEL_SIZE,
+      top: this.y * PIXEL_SIZE,
+    })
+  },
+
+  this.generateFood = function($container) {
+    this.x = getRandomInt(0, 49)
+    this.y = getRandomInt(0, 49)
+
+    this.$food = $("<div class = 'snake'></div>")
+    this.$food.appendTo($container)
+  },
+
+  this.eatFood = function(headx, heady) {
+    if (this.x == headx && this.y == heady) {
+      console.log("eaten!")
+      this.x = getRandomInt(0, 49)
+      this.y = getRandomInt(0, 49)
+      length++
+      return length
+    }
+  }
+
+
+      // lengthen()
+      // disappear()
+      // generateFood()
 }
 
-console.log(getRandomInt(0,49))
+
+// function generateFood(foodX, foodY) {
+//
+//   console.log(food)
+// }
+//
+// generateFood(foodX,foodY)
 
 
 // jQuery goes here:
@@ -78,13 +115,15 @@ $(function() {
 
   // create the snake
   var head = new SnakePiece($container)
-  for (i = 0; i < 20; i++) {
+  for (i = 0; i < length; i++) {
     head.lengthen()
   }
 
-  // update the snake
+  // update the snake (& the food, whenever it's eaten)
   setInterval(function() {
     head.update()
+    food.renderFood()
+    food.eatFood(head.x, head.y)
   }, 50)
 
   // listen for keypresses
@@ -98,13 +137,8 @@ $(function() {
       }
       event.preventDefault() // prevent the default action (scroll / move caret)
     })
+
+    // initialise first food
+    var food = new Food($container)
+
 })
-
-
-// function eatFood() {
-
-// }
-
-// function generateFood() {
-
-// }
