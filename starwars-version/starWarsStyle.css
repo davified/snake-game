@@ -51,8 +51,8 @@ button {
 }
 
 .container {
-  flex: 1
-  display:block;
+  flex: 1;
+  /*display: none;   - need to activate this if we're adding a start button*/
   width: 500px;
   height: 500px;
   border: 10px solid gold;
@@ -122,6 +122,10 @@ audio {
   background-size: 400px;
   background-repeat: no-repeat;
   background-position: bottom;
+  -webkit-transition: all 2s ease-in-out;
+  -moz-transition: all 2s ease-in-out;
+  -o-transition: all 2s ease-in-out;
+  transition: all 2s ease-in-out;
 }
 
 /* making the app mobile ready */

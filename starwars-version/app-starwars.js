@@ -81,7 +81,7 @@ SnakePiece.prototype = {
     if (gameOver === true) {
       clearInterval(intervalID)
       window.alert('game over!')
-      document.location.reload() // auto reload page to encourage addictive behavior
+      // document.location.reload() // auto reload page to encourage addictive behavior
     }
   }
 }
@@ -132,6 +132,10 @@ function Food ($container) {
 
 $(function () {
   var $container = $('.container')
+  // adding a start button
+  // $(".start").click(function() {
+  //   $container.toggle()
+  // })
 
   // create the snake
   head = new SnakePiece($container)
@@ -150,7 +154,7 @@ $(function () {
     food.changeIcon()
     head.isGameOver()
     head.endGame()
-  }, 50)
+  }, 40)
 
   // listen for directional keypresses. the if statements prevent the snake from reversing onto itself
   $(document).keydown(function (event) {
