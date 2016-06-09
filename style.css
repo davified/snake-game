@@ -1,11 +1,15 @@
-
+* {
+  max-width: 550px;
+  margin: 0 auto;
+}
 
 .container {
   display:block;
   width: 500px;
   height: 500px;
   border: 10px solid black;
-  position: relative
+  position: relative;
+  margin-top: 25px;
 }
 
 .snake {
@@ -15,10 +19,11 @@
   position: absolute;
 }
 
-food {
+.food {
   height: 10px;
   width: 10px;
-  background: blue;
+  background: black;
+  /*background-size: 10px*/
   position: absolute;
-  top: 50px;
+  top: 10px;
 }

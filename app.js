@@ -1,4 +1,6 @@
 /* global $*/
+// to do: (i) make site mobile ready, (ii) make star wars theme, (iii) swipe enabled, (iv) refactor, (v) fix self-collide.
+
 var PIXEL_SIZE = 10
 var BOARD_SIZE = 50
 var gameOver
@@ -81,7 +83,7 @@ var Food = function ($container) {
   this.x2 = getRandomInt(0, 49)
   this.y2 = getRandomInt(0, 49)
 
-  this.$food = $("<div class = 'snake'></div>")
+  this.$food = $("<div class = 'food'></div>")
   this.$food.appendTo($container)
 
 // this draws the food into existence, using the random x and y values of the food object. we can replace the pixels with something else (e.g. star wars icons)
@@ -121,6 +123,7 @@ $(function () {
     head.update()
     food.generateFood()
     food.eatFood(head.x, head.y)
+    console.log(head.x)
     head.isGameOver()
     head.endGame()
     console.log(head.tail)
