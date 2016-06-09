@@ -16,6 +16,18 @@ h2 {
   text-align: center;
 }
 
+h3 {
+  font-size: 1.3em;
+  margin-left: 20px;
+  margin-right: 150px;
+  display: inline;
+}
+
+a {
+  display: inline;
+  margin-left: 20px;
+}
+
 #options {
   display: flex;
   justify-content: center;

@@ -4,6 +4,8 @@
 var PIXEL_SIZE = 10
 var BOARD_SIZE = 50
 var gameOver
+var intervalID
+var head   // creating the variables in the global scope allows us to call it and its functions anwyhere in the code (e.g. I can now call head.addTail() in food.eatFood())
 
 function SnakePiece ($container, tail) {
   this.x = 0
@@ -104,11 +106,6 @@ var Food = function ($container) {
   }
 }
 
-// setting up swipe listeners
-
-var intervalID
-var head   // creating the variables in the global scope allows us to call it and its functions anwyhere in the code (e.g. I can now call head.addTail() in food.eatFood())
-
 // jQuery goes here:
 
 $(function () {
@@ -125,10 +122,9 @@ $(function () {
     head.update()
     food.generateFood()
     food.eatFood(head.x, head.y)
-    console.log(head.x)
+    // console.log(head.x)
     head.isGameOver()
     head.endGame()
-    console.log(head.tail)
   }, 50)
 
   // initialise food
@@ -137,56 +133,47 @@ $(function () {
   // listen for directional keypresses. the if statements prevent the snake from reversing onto itself
   $(document).keydown(function (event) {
     switch (event.which) {
-        case 37:   // left
+      case 37:   // left
         if (head.vx < 1) {
           head.setDirection(-1, 0)
           break
         }
-        else {
-          break
-        }
-        case 38:    // up
+        else break
+      case 38:    // up
         if (head.vy < 1) {
           head.setDirection(0, -1)
           break
         }
-        else {
-          break
-        }
-        case 39:    // right
+        else break
+      case 39:    // right
         if (head.vx > -1) {
           head.setDirection(1, 0)
           break
         }
-        else {
-          break
-        }
-        case 40:    // down
+        else break
+      case 40:    // down
         if (head.vy > -1) {
           head.setDirection(0, 1)
           break
         }
-        else {
-          break
-        }
-        default: return // exit this handler for other keys
+        else break
+      default: return // exit this handler for other keys
     }
     event.preventDefault() // prevent the default action (scroll / move caret)
   })
 
-  $('.container').on('swipeleft', function (e) {
-    head.setDirection(-1, 0)
+// setting up swipe listeners
+  $('.container').on('swipeleft', function (event) {
+    if (head.vx < 1) head.setDirection(-1, 0)
+  })
+  $('.container').on('swiperight', function (event) {
+    if (head.vx > -1) head.setDirection(1, 0)
+  })
+  $('.container').on('swipeup', function (event) {
+    if (head.vy < 1) head.setDirection(0, -1)
   })
 
-  $('.container').on('swiperight', function (e) {
-    head.setDirection(1, 0)
-  })
-
-  $('.container').on('swipeup', function (e) {
-    head.setDirection(0, -1)
-  })
-
-  $('.container').on('swipedown', function (e) {
-    head.setDirection(0, 1)
+  $('.container').on('swipedown', function (event) {
+    if (head.vy > -1) head.setDirection(0, 1)
   })
 })
