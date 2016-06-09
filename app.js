@@ -61,8 +61,7 @@ SnakePiece.prototype = {
     if (this.x >= BOARD_SIZE || this.y >= BOARD_SIZE || this.x < 0 || this.y < 0) {
       gameOver = true
       return gameOver
-    }
-    else if (this.x === head.tail.x && this.y === head.tail.y) {
+    } else if (this.x === head.tail.x && this.y === head.tail.y) {
       gameOver = true
       return gameOver
     }
@@ -122,6 +121,7 @@ $(function () {
     head.update()
     food.generateFood()
     food.eatFood(head.x, head.y)
+    console.log(head)
     head.isGameOver()
     head.endGame()
   }, 50)
@@ -138,24 +138,28 @@ $(function () {
           break
         }
         else break
+        /* falls through */
       case 38:    // up
         if (head.vy < 1) {
           head.setDirection(0, -1)
           break
         }
         else break
+        /* falls through */
       case 39:    // right
         if (head.vx > -1) {
           head.setDirection(1, 0)
           break
         }
         else break
+        /* falls through */
       case 40:    // down
         if (head.vy > -1) {
           head.setDirection(0, 1)
           break
         }
         else break
+        /* falls through */
       default: return // exit this handler for other keys
     }
     event.preventDefault() // prevent the default action (scroll / move caret)

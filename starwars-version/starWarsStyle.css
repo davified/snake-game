@@ -1,3 +1,4 @@
+/* css properties shared by the classic version and the star wars version*/
 * {
   max-width: 550px;
   margin: 0 auto;
@@ -59,6 +60,13 @@ button {
   margin-top: 25px;
 }
 
+/* setting css properties for star wars version*/
+audio {
+  display: flex;
+  justify-content: center;
+}
+
+/* turning snake into a light saber*/
 .snake {
   height: 10px;
   width: 10px;
@@ -68,6 +76,7 @@ button {
   position: absolute;
 }
 
+/* making the food objects larger for visibility*/
 .food {
   height: 30px;
   width: 30px;
@@ -77,6 +86,8 @@ button {
   border-radius:10px;
 }
 
+
+/*setting css properties for the six stages (from storm trooper to death star)*/
 .one {
   background-image: url("img/1stormtrooper.svg");
 }
@@ -112,6 +123,8 @@ button {
   background-repeat: no-repeat;
   background-position: bottom;
 }
+
+/* making the app mobile ready */
 /*
 @media only screen and (max-device-width: 480px) {
 		div#wrapper {
