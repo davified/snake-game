@@ -24,8 +24,9 @@ h3 {
 }
 
 a {
-  display: inline;
-  margin-left: 20px;
+  text-decoration: none;
+  color: black;
+  background: gold;
 }
 
 #options {

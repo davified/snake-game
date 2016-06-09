@@ -4,6 +4,7 @@
 var PIXEL_SIZE = 10
 var BOARD_SIZE = 50
 var gameOver
+var length = 8
 var intervalID
 var head   // creating the variables in the global scope allows us to call it and its functions anwyhere in the code (e.g. I can now call head.addTail() in food.eatFood())
 
@@ -66,13 +67,16 @@ SnakePiece.prototype = {
       gameOver = true
       return gameOver
     }
+    else if (length > 19) {
+      $(".container").addClass('winning-background')
+    }
     return gameOver
   },
 
   endGame: function () {
     if (gameOver === true) {
       clearInterval(intervalID)
-      window.alert('game over!')
+      window.alert("game over!")
     }
   }
 }
@@ -81,11 +85,11 @@ function getRandomInt (min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min
 }
 
-var Food = function ($container) {
-  this.x2 = getRandomInt(0, 49)
-  this.y2 = getRandomInt(0, 49)
+function Food ($container) {
+  this.x2 = getRandomInt(0, 47)
+  this.y2 = getRandomInt(0, 47)
 
-  this.$food = $("<div class = 'food'></div>")
+  this.$food = $("<div class = 'food one'></div>")
   this.$food.appendTo($container)
 
 // this draws the food into existence, using the random x and y values of the food object. we can replace the pixels with something else (e.g. star wars icons)
@@ -96,12 +100,28 @@ var Food = function ($container) {
     })
   }
 
+// change icons & background as head length increases
+  this.changeIcon = function () {
+    if (length > 10) this.$food.addClass('two').removeClass('one')
+    if (length > 12) this.$food.addClass('three').removeClass('two')
+    if (length > 14) this.$food.addClass('four').removeClass('three')
+    if (length > 16) this.$food.addClass('five').removeClass('four')
+    if (length > 18) this.$food.addClass('six').removeClass('five')
+  }
+
+// change background
+if($('#food').hasClass('two')) {
+  $(".container").css
+  }
+
   this.eatFood = function (headx, heady) {
-    if (this.x2 === headx && this.y2 === heady) {
+    if ((this.x2 === headx && this.y2 === heady) || ((this.x2 + 1) === headx && (this.y2 + 1) === heady) || ((this.x2 + 2) === headx && (this.y2 + 2) === heady) || ((this.x2 + 3) === headx && (this.y2 + 2) === heady)) {
       console.log('Nom!')
-      this.x2 = getRandomInt(0, 49)
-      this.y2 = getRandomInt(0, 49)
+      this.x2 = getRandomInt(0, 47)
+      this.y2 = getRandomInt(0, 47)
       head.addTail()
+      length++
+      console.log(length)
     }
   }
 }
@@ -117,11 +137,12 @@ $(function () {
     head.addTail()
   }
 
-  // update the snake (& the food, whenever it's eaten) at 50ms intervals
+  // update the snake (& the food, whenever it's eaten)
   intervalID = setInterval(function () {
     head.update()
     food.generateFood()
     food.eatFood(head.x, head.y)
+    food.changeIcon()
     head.isGameOver()
     head.endGame()
   }, 50)

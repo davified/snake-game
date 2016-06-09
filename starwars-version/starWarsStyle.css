@@ -1,0 +1,125 @@
+* {
+  max-width: 550px;
+  margin: 0 auto;
+  font-family: 'Londrina Solid', cursive;
+  color: gold;
+  background: black;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+  background: gold;
+}
+
+h1 {
+  text-align: center;
+  font-size: 5em;
+}
+
+h2 {
+  font-size: 2em;
+  text-align: center;
+}
+
+h3 {
+  font-size: 1.3em;
+  margin-left: 20px;
+  margin-right: 150px;
+  display: inline;
+}
+
+a {
+  display: inline;
+  margin-left: 20px;
+}
+
+#options {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background: gold;
+  color: black;
+  border: none;
+  font-size: 3em;
+  flex: 1;
+  margin: 10px;
+  font-size: 2em;
+}
+
+.container {
+  flex: 1
+  display:block;
+  width: 500px;
+  height: 500px;
+  border: 10px solid gold;
+  position: relative;
+  margin-top: 25px;
+}
+
+.snake {
+  height: 10px;
+  width: 10px;
+  background: #B9FFDC;
+  border-color: black;
+  box-shadow: 0 0 50px rgb(0, 255, 127);
+  position: absolute;
+}
+
+.food {
+  height: 30px;
+  width: 30px;
+  background-size: 30px;
+  position: absolute;
+  top: 30px;
+  border-radius:10px;
+}
+
+.one {
+  background-image: url("img/1stormtrooper.svg");
+}
+
+.two {
+  background-image: url("img/2bobafett.svg");
+}
+
+.three {
+  background-image: url("img/3elephant.svg");
+  background-color: white;
+}
+
+.four {
+  background-image: url("img/4tiefighter.svg");
+  background-color: white;
+}
+
+.five {
+  background-image: url("img/5darthvader.svg");
+  background-color: white;
+}
+
+.six {
+  background-image: url("img/6deathstar.svg");
+  background-color: white;
+}
+
+.winning-background {
+  background: #CA2128;
+  background-image: url("img/final.jpg");
+  background-size: 400px;
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+/*
+@media only screen and (max-device-width: 480px) {
+		div#wrapper {
+			width: 400px;
+		}
+
+		div#header {
+			background-image: url(media-queries-phone.jpg);
+			height: 93px;
+			position: relative;
+		}*/

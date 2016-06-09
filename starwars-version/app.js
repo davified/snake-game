@@ -70,9 +70,9 @@ SnakePiece.prototype = {
   },
 
   endGame: function () {
-    if (gameOver === true) {
+    if (gameOver == true) {
       clearInterval(intervalID)
-      window.alert('game over!')
+      alert("game over!")
     }
   }
 }

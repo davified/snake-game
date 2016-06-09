@@ -25,7 +25,7 @@
 	}
 })(function(jQuery, undefined){
 	var add = jQuery.event.add,
-	   
+
 	    remove = jQuery.event.remove,
 
 	    // Just sugar, so we can have arguments in the same order as
@@ -37,10 +37,10 @@
 	    settings = {
 	    	// Ratio of distance over target finger must travel to be
 	    	// considered a swipe.
-	    	threshold: 0.4,
+	    	threshold: 0.2,
 	    	// Faster fingers can travel shorter distances to be considered
 	    	// swipes. 'sensitivity' controls how much. Bigger is shorter.
-	    	sensitivity: 6
+	    	sensitivity: 10
 	    };
 
 	function moveend(e) {
@@ -91,12 +91,12 @@
 
 	function getData(node) {
 		var data = jQuery.data(node, 'event_swipe');
-		
+
 		if (!data) {
 			data = { count: 0 };
 			jQuery.data(node, 'event_swipe', data);
 		}
-		
+
 		return data;
 	}
 

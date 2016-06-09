@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>Snake</title>
 
-  <link rel="stylesheet" href="style.css">
-  <script src="js/jquery-1.12.4.min.js"></script>
+  <link rel="stylesheet" href="starWarsStyle.css">
+  <script src="../js/jquery-1.12.4.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Londrina+Solid' rel='stylesheet' type='text/css'>
-  <script src="js/jquery.event.move.js"></script>
-	<script src="js/jquery.event.swipe.js"></script>
-  <script src="app.js"></script>
+  <script src="../js/jquery.event.move.js"></script>
+  <script src="../js/jquery.event.swipe.js"></script>
+  <script src="app-starwars.js"></script>
   <script async defer src="https://buttons.github.io/buttons.js"></script>
 </head>
 <body>
@@ -22,12 +22,18 @@
 
   <!-- app.js appends things here-->
   <div class="container"></div>
-    
+
 
   <h2>Choose your fate:</h2>
   <div id="options">
-    <button><a  href='index.html'>Classic</a></button>
-    <button><a href='starwars-version/index-starwars.html'>Star Wars</a></button>
+    <button type='button' name='standard-snake'><a  href='../index.html'>Classic</a></button>
+    <button type='button' name='starwars'><a href='index-starwars.html'>Star Wars</a></button>
   </div>
+
+  <audio loop="loop" autoplay="autoplay">
+  <!-- <audio loop="loop" controls="controls"> -->
+    <source src="audio/imperialmarch.mp3" type="audio/mpeg" />
+  </audio>
+
 </body>
 </html>
