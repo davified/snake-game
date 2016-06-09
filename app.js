@@ -104,6 +104,8 @@ var Food = function ($container) {
   }
 }
 
+// setting up swipe listeners
+
 var intervalID
 var head   // creating the variables in the global scope allows us to call it and its functions anwyhere in the code (e.g. I can now call head.addTail() in food.eatFood())
 
@@ -172,4 +174,19 @@ $(function () {
     event.preventDefault() // prevent the default action (scroll / move caret)
   })
 
+  $('.container').on('swipeleft', function (e) {
+    head.setDirection(-1, 0)
+  })
+
+  $('.container').on('swiperight', function (e) {
+    head.setDirection(1, 0)
+  })
+
+  $('.container').on('swipeup', function (e) {
+    head.setDirection(0, -1)
+  })
+
+  $('.container').on('swipedown', function (e) {
+    head.setDirection(0, 1)
+  })
 })
