@@ -24,10 +24,10 @@ h2 {
 }
 
 h3 {
+  display: inline;
   font-size: 1.3em;
   margin-left: 20px;
   margin-right: 150px;
-  display: inline;
 }
 
 a {
@@ -61,9 +61,13 @@ button {
 }
 
 /* setting css properties for star wars version*/
-audio {
+.audioplayer {
   display: flex;
   justify-content: center;
+}
+
+iframe {
+  display: inline;
 }
 
 /* turning snake into a light saber*/

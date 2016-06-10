@@ -17,23 +17,22 @@ function SnakePiece ($container, tail) {
 
 // appending the snake onto the DOM
   this.$container = $container
-
   this.$snake = $('<div class = "snake"></div>')
   this.$snake.appendTo($container)
 }
 
-// adding functions to the SnakePiece prototype (move, update, setDirection, addTail, isGameOver, endGame)
+// adding functions to the SnakePiece prototype (draw, update, setDirection, addTail, isGameOver, endGame)
 SnakePiece.prototype = {
   // "drawing" the snake pieces by multiplying a single coordinate by PIXEL_SIZE (10px)
-  move: function (x, y) {
+  draw: function (x, y) {
     this.$snake.css({
       left: this.x * PIXEL_SIZE,
       top: this.y * PIXEL_SIZE
     })
 
-    // move the tail to where the current piece is
+    // drawing the tail (if there is one)
     if (this.tail) {
-      this.tail.move(this.x, this.y)
+      this.tail.draw(this.x, this.y)
     }
 
     // set new position of the first piece
@@ -46,7 +45,7 @@ SnakePiece.prototype = {
     var x = this.x + this.vx
     var y = this.y + this.vy
 
-    this.move(x, y)
+    this.draw(x, y)
   },
 
   // a function to set direction of the snake
@@ -70,7 +69,7 @@ SnakePiece.prototype = {
     } else if (this.x === head.tail.x && this.y === head.tail.y) {
       gameOver = true
       return gameOver
-    } else if (length > 19) {
+    } else if (length === 20) {
       $('.container').addClass('winning-background')
     }
     return gameOver
@@ -93,8 +92,8 @@ function getRandomInt (min, max) {
 
 // defining a Food constructor function (similar to the SnakePiece constructor) to create food objects
 function Food ($container) {
-  this.x2 = getRandomInt(0, 47)
-  this.y2 = getRandomInt(0, 47)
+  this.x2 = getRandomInt(0, (BOARD_SIZE - 3))
+  this.y2 = getRandomInt(0, (BOARD_SIZE - 3))
 
   this.$food = $("<div class = 'food one'></div>")
   this.$food.appendTo($container)

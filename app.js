@@ -14,24 +14,23 @@ function SnakePiece ($container, tail) {
   this.vy = 0
   this.tail = tail
 
-  this.$container = $container
-
 // appending the snake onto the DOM
+  this.$container = $container
   this.$snake = $("<div class = 'snake'></div>")
   this.$snake.appendTo($container)
 }
 
 SnakePiece.prototype = {
-  move: function (x, y) {
-    // move pixels on screen
+  draw: function (x, y) {
+    // draw pixels on screen
     this.$snake.css({
       left: this.x * PIXEL_SIZE,
       top: this.y * PIXEL_SIZE
     })
 
-    // move the tail to where this piece was
+    // draw the tail (if there is one))
     if (this.tail) {
-      this.tail.move(this.x, this.y)
+      this.tail.draw(this.x, this.y)
     }
 
     // set new position
@@ -43,7 +42,7 @@ SnakePiece.prototype = {
     var x = this.x + this.vx
     var y = this.y + this.vy
 
-    this.move(x, y)
+    this.draw(x, y)
   },
 
   setDirection: function (vx, vy) {
