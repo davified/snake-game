@@ -66,13 +66,22 @@ SnakePiece.prototype = {
     if (this.x >= BOARD_SIZE || this.y >= BOARD_SIZE || this.x < 0 || this.y < 0) {
       gameOver = true
       return gameOver
-    } else if (this.x === head.tail.x && this.y === head.tail.y) {
+    } else if (this.selfCollided(head) === true) {
       gameOver = true
       return gameOver
     } else if (length === 20) {
       $('.container').addClass('winning-background')
     }
     return gameOver
+  },
+
+  selfCollided: function (head) {
+    if (!head || !head.tail) return
+    if (this.x === head.tail.x && this.y === head.tail.y) {
+      return true
+    } else {
+      return this.selfCollided(head.tail)
+    }
   },
 
   // end the game

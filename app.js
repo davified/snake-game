@@ -60,11 +60,20 @@ SnakePiece.prototype = {
     if (this.x >= BOARD_SIZE || this.y >= BOARD_SIZE || this.x < 0 || this.y < 0) {
       gameOver = true
       return gameOver
-    } else if (this.x === head.tail.x && this.y === head.tail.y) {
+    } else if (this.selfCollided(head) === true ) {
       gameOver = true
       return gameOver
     }
     return gameOver
+  },
+
+  selfCollided: function (head) {
+    if (!head || !head.tail) return
+    if (this.x === head.tail.x && this.y === head.tail.y) {
+      return true
+    } else {
+      return this.selfCollided(head.tail)
+    }
   },
 
   endGame: function () {
@@ -100,6 +109,7 @@ var Food = function ($container) {
       this.x2 = getRandomInt(0, 49)
       this.y2 = getRandomInt(0, 49)
       head.addTail()
+      console.log(head)
     }
   }
 }
@@ -120,10 +130,10 @@ $(function () {
     head.update()
     food.generateFood()
     food.eatFood(head.x, head.y)
-    console.log(head)
+    head.selfCollided(head)
     head.isGameOver()
     head.endGame()
-  }, 50)
+  }, 40)
 
   // initialise food
   var food = new Food($container)
