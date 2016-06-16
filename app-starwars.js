@@ -69,7 +69,7 @@ SnakePiece.prototype = {
     } else if (this.selfCollided(head) === true) {
       gameOver = true
       return gameOver
-    } else if (length === 100) {
+    } else if (length === 110) {
       $('.container').addClass('winning-background')
     }
     return gameOver
@@ -117,11 +117,11 @@ function Food ($container) {
 
 // a function to change icons as snake length increases
   this.changeIcon = function () {
-    if (length > 10) this.$food.addClass('two').removeClass('one')
-    if (length > 20) this.$food.addClass('three').removeClass('two')
-    if (length > 40) this.$food.addClass('four').removeClass('three')
+    if (length > 18) this.$food.addClass('two').removeClass('one')
+    if (length > 30) this.$food.addClass('three').removeClass('two')
+    if (length > 45) this.$food.addClass('four').removeClass('three')
     if (length > 70) this.$food.addClass('five').removeClass('four')
-    if (length > 90) this.$food.addClass('six').removeClass('five')
+    if (length > 100) this.$food.addClass('six').removeClass('five')
   }
 
   this.eatFood = function (headx, heady) {
