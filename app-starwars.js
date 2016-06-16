@@ -162,7 +162,7 @@ $(function () {
     head.isGameOver()
     head.endGame()
     $('#score').html(length*10)
-  }, 38)
+  }, 35)
 
   // listen for directional keypresses. the if statements prevent the snake from reversing onto itself
   $(document).keydown(function (event) {
