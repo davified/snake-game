@@ -69,7 +69,7 @@ SnakePiece.prototype = {
     } else if (this.selfCollided(head) === true) {
       gameOver = true
       return gameOver
-    } else if (length === 20) {
+    } else if (length === 100) {
       $('.container').addClass('winning-background')
     }
     return gameOver
@@ -88,7 +88,7 @@ SnakePiece.prototype = {
   endGame: function () {
     if (gameOver === true) {
       clearInterval(intervalID)
-      window.alert('game over!')
+      window.alert('game over! click on your fate below to restart')
       // document.location.reload() // auto reload page to encourage addictive behavior
     }
   }
@@ -119,9 +119,9 @@ function Food ($container) {
   this.changeIcon = function () {
     if (length > 10) this.$food.addClass('two').removeClass('one')
     if (length > 12) this.$food.addClass('three').removeClass('two')
-    if (length > 14) this.$food.addClass('four').removeClass('three')
-    if (length > 16) this.$food.addClass('five').removeClass('four')
-    if (length > 18) this.$food.addClass('six').removeClass('five')
+    if (length > 13) this.$food.addClass('four').removeClass('three')
+    if (length > 14) this.$food.addClass('five').removeClass('four')
+    if (length > 15) this.$food.addClass('six').removeClass('five')
   }
 
   this.eatFood = function (headx, heady) {
@@ -131,7 +131,6 @@ function Food ($container) {
       this.y2 = getRandomInt(0, 47)
       head.addTail()
       length++
-      console.log(length)
     }
   }
 }
@@ -162,7 +161,8 @@ $(function () {
     food.changeIcon()
     head.isGameOver()
     head.endGame()
-  }, 40)
+    $('#score').html(length*10)
+  }, 38)
 
   // listen for directional keypresses. the if statements prevent the snake from reversing onto itself
   $(document).keydown(function (event) {

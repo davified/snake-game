@@ -40,6 +40,19 @@ a {
   justify-content: center;
 }
 
+.flexbox {
+  display: flex;
+}
+
+.flexchild-10 {
+  flex: 10
+}
+
+.flexchild-1 {
+  flex: 1;
+  padding: 10px;
+}
+
 button {
   background: gold;
   color: black;
@@ -102,22 +115,18 @@ iframe {
 
 .three {
   background-image: url("img/3elephant.svg");
-  background-color: white;
 }
 
 .four {
   background-image: url("img/4tiefighter.svg");
-  background-color: white;
 }
 
 .five {
   background-image: url("img/5darthvader.svg");
-  background-color: white;
 }
 
 .six {
   background-image: url("img/6deathstar.svg");
-  background-color: white;
 }
 
 .winning-background {
@@ -132,15 +141,11 @@ iframe {
   transition: all 2s ease-in-out;
 }
 
-/* making the app mobile ready */
-/*
-@media only screen and (max-device-width: 480px) {
-		div#wrapper {
-			width: 400px;
-		}
-
-		div#header {
-			background-image: url(media-queries-phone.jpg);
-			height: 93px;
-			position: relative;
-		}*/
+#blackbox {
+  height: 10px;
+  width: 10px;
+  background: black;
+  float:left;
+  position: relative;
+  z-index:1;
+}

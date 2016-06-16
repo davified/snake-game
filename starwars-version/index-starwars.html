@@ -17,12 +17,17 @@
   <h1>SNOKE</h1>
 
   <!-- Adding github "star" and "follow" buttons -->
-  <h3>Enjoyed the game? Give it a star!</h3>
-  <a class="github-button" href="https://github.com/davified/snake-game" data-icon="octicon-star" data-style="mega" data-count-href="/davified/snake-game/stargazers" data-count-api="/repos/davified/snake-game#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star davified/snake-game on GitHub">Star</a>
-
+  <div class="flexbox">
+    <div class="flexchild-10">
+      <h3 class="flexchild-10">Enjoyed the game? Give it a star!</h3><br>
+      <h3 class="flexchild-10">Score: <span id="score"></span></h3>
+    </div>
+    <div class="flexchild-1">
+    <a class="github-button" href="https://github.com/davified/snake-game" data-icon="octicon-star" data-style="mega" data-count-href="/davified/snake-game/stargazers" data-count-api="/repos/davified/snake-game#stargazers_count" data-count-aria-label="# stargazers on GitHub" aria-label="Star davified/snake-game on GitHub">Star</a>
+    </div>
+  </div>
   <!-- app.js appends things here-->
-  <!-- <button type='button' class='start'>Start</button> -->
-  <div class="container"></div>
+  <div class="container"><div id="blackbox"></div></div>
 
 
   <h2>Choose your fate:</h2>

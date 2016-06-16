@@ -5,6 +5,7 @@ var PIXEL_SIZE = 10
 var BOARD_SIZE = 50
 var gameOver
 var intervalID
+var length = 8
 var head   // creating the variables in the global scope allows us to call it and its functions anwyhere in the code (e.g. I can now call head.addTail() in food.eatFood())
 
 function SnakePiece ($container, tail) {
@@ -79,7 +80,7 @@ SnakePiece.prototype = {
   endGame: function () {
     if (gameOver === true) {
       clearInterval(intervalID)
-      window.alert('game over!')
+      window.alert('game over! click on your fate below to restart')
     }
   }
 }
@@ -109,7 +110,7 @@ var Food = function ($container) {
       this.x2 = getRandomInt(0, 49)
       this.y2 = getRandomInt(0, 49)
       head.addTail()
-      console.log(head)
+      length++
     }
   }
 }
@@ -133,6 +134,7 @@ $(function () {
     head.selfCollided(head)
     head.isGameOver()
     head.endGame()
+    $('#score').html(length * 10)
   }, 40)
 
   // initialise food
