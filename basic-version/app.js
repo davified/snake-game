@@ -61,7 +61,7 @@ SnakePiece.prototype = {
     if (this.x >= BOARD_SIZE || this.y >= BOARD_SIZE || this.x < 0 || this.y < 0) {
       gameOver = true
       return gameOver
-    } else if (this.selfCollided(head) === true ) {
+    } else if (this.selfCollided(head) === true) {
       gameOver = true
       return gameOver
     }

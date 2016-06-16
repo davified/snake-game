@@ -161,7 +161,7 @@ $(function () {
     food.changeIcon()
     head.isGameOver()
     head.endGame()
-    $('#score').html(length*10)
+    $('#score').html(length * 10)
   }, 35)
 
   // listen for directional keypresses. the if statements prevent the snake from reversing onto itself
